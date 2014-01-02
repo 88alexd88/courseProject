@@ -13,8 +13,8 @@ end
 
 ask_recursively 'Do you wet the bed?'
 
-puts 
-puts 
+puts " "
+puts " "
 
 def factorial num
 	if num < 0
@@ -33,7 +33,5 @@ puts factorial(2)
 puts factorial(20)
 puts factorial(9)
 
-puts
-puts
-
-"here is an update"
+puts " "
+puts " "
