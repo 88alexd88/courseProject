@@ -1,37 +1,79 @@
-def ask_recursively question
-	puts question
-	reply = gets.chomp.downcase
-	if reply == 'yes'
-		true
-	elsif reply == 'no'
-		false
-	else
-		puts 'Please answer "yes" or "no".'
-		ask_recursively question # This is the magic line.
-	end
+# chapter 10
+
+# sort
+
+def sort array
+  rec_sort array, []
 end
 
-ask_recursively 'Do you wet the bed?'
+def rec_sort unsorted_array, sorted_array
+  if unsorted_array.length <= 0
+	return sorted_array
+  end
 
-puts " "
-puts " "
+  smallest = unsorted_array.pop
+  still_unsorted_array = []
 
-def factorial num
-	if num < 0
-		return 'You can\'t take the factorial of a negative number!'
+	unsorted_array.each do |word|
+		if word < smallest
+			still_unsorted_array.push smallest
+			smallest = word
+		else
+			still_unsorted_array.push word
+		end
 	end
-	if num <= 1
-		1
-	else
-		num * factorial(num-1)
-	end
+	sorted_array.push smallest
+	rec_sort still_unsorted_array, sorted_array
+end
+puts(sort(['well','hope','this','works',' ']))
+
+
+# Dictionary sort
+
+def sort array
+  rec_sort array, []
 end
 
-puts factorial(3)
-puts factorial(30)
-puts factorial(2)
-puts factorial(20)
-puts factorial(9)
+def rec_sort unsorted_array, sorted_array
+  if unsorted_array.length <= 0
+	return sorted_array
+  end
 
-puts " "
-puts " "
+  smallest = unsorted_array.pop
+  still_unsorted_array = []
+
+	unsorted_array.each do |word|
+		if word.downcase < smallest.downcase
+			still_unsorted_array.push smallest
+			smallest = word
+		else
+			still_unsorted_array.push word
+		end
+	end
+	sorted_array.push smallest
+	rec_sort still_unsorted_array, sorted_array
+end
+puts(sort(['Well','hope','This','works',' ']))
+
+
+# shuffle sort
+
+def shuff array
+  shuffle = []
+  while array.length > 0
+    rand_index = rand(array.length)
+    num_index = 0
+    new_array = []
+
+      array.each do |item|
+        if num_index == rand_index
+          shuffle.push item
+        else
+          new_array.push item
+        end
+       num_index = num_index + 1
+      end
+    array = new_array
+  end
+  shuffle
+end
