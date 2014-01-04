@@ -77,3 +77,6 @@ def shuff array
   end
   shuffle
 end
+
+
+puts shuffle([1,2,3,4,5,6])
